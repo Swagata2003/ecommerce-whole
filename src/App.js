@@ -4,6 +4,7 @@ import Home from './components/Home/Home';
 import Navbar from './components/Navbar/Navbar';
 // import Carousel from './components/Carousel';
 import Navbar2 from './components/Navbar2/Navbar2';
+import { useState } from 'react';
 import Login from './components/Login/Login';
 import {
   BrowserRouter as Router,
@@ -34,6 +35,7 @@ import Footer from './components/Footer';
 import About from './components/Home/About'
 import Loader from './components/Loader';
 function App() {
+  const [searchQuery, setSearchQuery] = useState('');
   const categories = ['Electronics', 'Furniture', 'Jewellery', 'Hair Care', 'Makeup', 'Skin Care','Shoes','Kidsclothing','Perfume']
   const types=['Bags & Purses','Necklace','Bracelet','Earrings','Ring'];
   const brands = [
@@ -53,6 +55,10 @@ function App() {
   ];
   
   
+
+  const handleSearchQuery = (query) => {
+    setSearchQuery(query);
+  };
   
   
   
@@ -63,7 +69,7 @@ function App() {
       <Itemstate>
         <Router basename="/ecommerce-whole">
           <header>
-            <Navbar />
+            <Navbar onSearch={handleSearchQuery}/>
             <Navbar2 />
           </header>
           <div className="main-content" style={{ minHeight: '70vh' }}>
@@ -89,12 +95,11 @@ function App() {
               {types.map((type) => (
                 <Route exact path={`/${btoa(type)}`} element={<Womentype type={type} />}></Route>
               ))}
-              <Route exact path={`/search`} element={<Search />}></Route>
+              <Route exact path="/search" element={<Search word={searchQuery} />}></Route>
               {brands.map((brand)=>(
                 <Route exact path={`/${btoa(brand)}`} element={<Brandsearch brand={brand} />}></Route>
               ))}
               <Route exact path="/api/account/paymentdetails" element={<PaymentDetails />}></Route>
-              <Route exact path="/loader" element={<Loader />}></Route>
             </Routes>
           </div>
           <Footer />

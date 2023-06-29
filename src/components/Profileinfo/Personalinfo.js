@@ -1,9 +1,10 @@
 import React from 'react'
 import './Profileinfo.css'
 import { useState, useEffect } from 'react'
+import BASE_URL from '../../config'
 const Personalinfo = () => {
     const [submitted, setSubmitted] = useState(false)
-    const host = process.env.BASE_URL1;
+    const host = BASE_URL;
     const [info, setinfo] = useState({ name: "", email: "", gender: "", address: "", mobileno: "", city: "", state: "", zip: "" })
     useEffect(() => {
         fetchuserinfo();
@@ -38,6 +39,7 @@ const Personalinfo = () => {
     }
     const handlesubmit = (e) => {
         editinfo(e, info)
+        alert("Personal info saved")
     }
 
     return (

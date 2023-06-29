@@ -9,8 +9,10 @@ import { bindActionCreators } from 'redux';
 import { logincreator } from '../state';
 import totalitems from '../products.json'
 import Search from './Search'
+// import {useHistory} from 'react-router-dom'
 import itemContext from '../../context/items/ItemContext'
-const Navbar = () => {
+const Navbar = (props) => {
+    const {onSearch}=props;
     const [islistvisible, setislist] = useState(false);
     const [isaccount, setaccount] = useState(false);
     const [searchword, setword] = useState('');
@@ -21,7 +23,6 @@ const Navbar = () => {
     const loggedin = useSelector(state => state.loggedin);
     const navigate = useNavigate();
     const dispatch = useDispatch();
-
     const { removelocalstorage } = bindActionCreators(logincreator, dispatch);
     const hovermouseenter = () => {
         setislist(true);
@@ -47,10 +48,11 @@ const Navbar = () => {
         setword(e.target.value)
     }
     const handlesearchbar = (e) => {
-        // e.preventDefault()
+        e.preventDefault()
         if (searchword !== '') {
-            localStorage.setItem('searchword', searchword)
-            navigate(`/search`)
+            onSearch(searchword);
+            e.target.reset(); 
+            navigate("/search")
         }
     }
     useEffect(() => {
@@ -78,7 +80,7 @@ const Navbar = () => {
 
     }
     const handlecart = (e) => {
-        // e.preventDefault();
+        e.preventDefault();
         if (loggedin) navigate('/api/cart');
         else {
             alert('You need to login first');
@@ -95,7 +97,7 @@ const Navbar = () => {
     }
     const handlebrand = (e, str) => {
 
-        // e.preventDefault();
+        e.preventDefault();
         const brand = str;
         localStorage.setItem('brand', brand);
         navigate("/brandsearch")
@@ -119,19 +121,19 @@ const Navbar = () => {
                                     <div className="row" style={{padding:'0em'}}>
                                         <h4 style={{padding:'0.5em 1em'}}>Top Brands</h4>
                                         <ul className="women-brands" style={{lineHeight:'2em',padding:'0em'}}>
-                                            <li><a href="" style={{padding:'0em 2em'}} onClick={() => { window.location.href = `/${btoa('TRESemme')}`; }}>TRESemme</a></li>
-                                            <li><a href="" style={{padding:'0em 2em'}} onClick={() => { window.location.href = `/${btoa('mamaEarth')}`; }}>mamaEarth</a></li>
-                                            <li><a href="" style={{padding:'0em 2em'}} onClick={() => { window.location.href = `/${btoa('Maybelline New York')}`; }}>Maybelline New York</a></li>
-                                            <li><a href="" style={{padding:'0em 2em'}} onClick={() => { window.location.href = `/${btoa('Lakmé')}`; }}>Lakmé</a></li>
-                                            <li><a href="" style={{padding:'0em 2em'}} onClick={() => { window.location.href = `/${btoa("L'Oréal Paris")}`; }}>L'Oréal Paris</a></li>
-                                            <li><a href="" style={{padding:'0em 2em'}} onClick={() => { window.location.href = `/${btoa('Samsung')}`; }}>Samsung</a></li>
-                                            <li><a href="" style={{padding:'0em 2em'}} onClick={() => { window.location.href = `/${btoa('hp')}`; }}>hp</a></li>
-                                            <li><a href="" style={{padding:'0em 2em'}} onClick={() => { window.location.href = `/${btoa('Asus')}`; }}>Asus</a></li>
-                                            <li><a href="" style={{padding:'0em 2em'}} onClick={() => { window.location.href = `/${btoa('Apple')}`; }}>Apple</a></li>
-                                            <li><a href="" style={{padding:'0em 2em'}} onClick={() => { window.location.href = `/${btoa('lenovo')}`; }}>Lenovo</a></li>
-                                            <li><a href="" style={{padding:'0em 2em'}} onClick={() => { window.location.href = `/${btoa('Acer')}`; }}>Acer</a></li>
-                                            <li><a href="" style={{padding:'0em 2em'}} onClick={() => { window.location.href = `/${btoa('Whirlpool')}`; }}>Whirlpool</a></li>
-                                            <li><a href="" style={{padding:'0em 2em'}} onClick={() => { window.location.href = `/${btoa('Adidas')}`; }}>ADIDAS</a></li>
+                                            <li><Link to= {`/${btoa('TRESemme')}`} style={{padding:'0em 2em'}}>TRESemme</Link></li>
+                                            <li><Link to= {`/${btoa('mamaEarth')}`} style={{padding:'0em 2em'}}>mamaEarth</Link></li>
+                                            <li><Link to= {`/${btoa('Maybelline New York')}`} style={{padding:'0em 2em'}}>Maybelline New York</Link></li>
+                                            <li><Link to= {`/${btoa('Lakmé')}`} style={{padding:'0em 2em'}}>Lakmé</Link></li>
+                                            <li><Link to= {`/${btoa('L\'Oréal Paris')}`} style={{padding:'0em 2em'}}>L'Oréal Paris</Link></li>
+                                            <li><Link to= {`/${btoa('Samsung')}`} style={{padding:'0em 2em'}}>Samsung</Link></li>
+                                            <li><Link to={`/${btoa('hp')}`} style={{padding:'0em 2em'}}>hp</Link></li>
+                                            <li><Link to={`/${btoa('Asus')}`} style={{padding:'0em 2em'}}>Asus</Link></li>
+                                            <li><Link to={`/${btoa('Apple')}`} style={{padding:'0em 2em'}}>Apple</Link></li>
+                                            <li><Link to={`/${btoa('lenovo')}`} style={{padding:'0em 2em'}}>Lenovo</Link></li>
+                                            <li><Link to={`/${btoa('Acer')}`} style={{padding:'0em 2em'}}>Acer</Link></li>
+                                            <li><Link to={`/${btoa('Whirlpool')}`} style={{padding:'0em 2em'}}>Whirlpool</Link></li>
+                                            <li><Link to={`/${btoa('Adidas')}`} style={{padding:'0em 2em'}}>ADIDAS</Link></li>
                                             {/* <li><a href="" onClick={(e)=>handlebrand(e,'')}>LG</a></li> */}
                                         </ul>
                                     </div>
@@ -182,8 +184,8 @@ const Navbar = () => {
                                 </a>
                             </li>
                             <li>
-                                <a href="">
-                                    <i className="fa-solid fa-cart-shopping icon-large" onClick={handlecart}></i>
+                                <a onClick={handlecart}>
+                                    <i className="fa-solid fa-cart-shopping icon-large" style={{cursor:'pointer'}}></i>
                                     <span className="cartbadge position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style={{  }}>
                                         {loggedin ? items.length : ''}
                                     </span>
