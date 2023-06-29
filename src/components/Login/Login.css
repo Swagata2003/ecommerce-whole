@@ -1,0 +1,18 @@
+.Login img,.Signup img{
+  /* height: 100%; */
+  width:100%; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.Login .formclass,.Signup .form{
+    position:absolute;
+    min-width:450px;
+    left:530px;
+    top:200px;
+    background-color:white;
+    padding:40px;
+    border-radius:20px;
+}
