@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import itemContext from '../../context/items/ItemContext';
 import { useNavigate, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import Loader from '../Loader';
 
 const Cart = () => {
   const context = useContext(itemContext);
@@ -11,14 +12,20 @@ const Cart = () => {
   const [toldprice, setOldPrice] = useState(0);
   const [tnewprice, setNewPrice] = useState(0);
   const loggedin = useSelector(state => state.loggedin);
-
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
+    setIsLoading(true);
     const fetchItems = async () => {
       const fetchedItems = await getitems();
       setItems(fetchedItems);
     };
 
     if (loggedin) fetchItems();
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -75,11 +82,15 @@ const Cart = () => {
 
   return (
     <>
-    { loggedin &&(<div style={{ backgroundColor: 'rgb(235,235,235)', minHeight: '86vh' }}>
+  {isLoading ? (
+    <Loader />
+  ) : (
+    loggedin && (
+      <div style={{ backgroundColor: 'rgb(235,235,235)', minHeight: '86vh', alignItems: 'center', justifyContent: 'center', display: 'flex' }}>
         {items.length === 0 && (
-          <div className="card" style={{ backgroundColor: '#f7f7f7', width: '60em', position: 'absolute', top: '10em', left: '20em', padding: '2em' }}>
+          <div className="card" style={{ display: 'flex', backgroundColor: '#f7f7f7', width: '60em', position: 'absolute', padding: '2em', alignItems: 'center' }}>
             <img src="https://www.seekpng.com/png/detail/117-1170538_404-your-cart-is-empty.png" alt="" />
-            <button className="btn btn-primary" style={{ width: '12em', marginLeft: '20em' }} onClick={() => navigate('/')}>
+            <button className="btn btn-primary col-md-6" onClick={() => navigate('/')}>
               Continue Shopping
             </button>
           </div>
@@ -160,8 +171,11 @@ const Cart = () => {
             </div>
           </div>
         )}
-      </div>)}
-      </>
+      </div>
+    )
+  )}
+</>
+
   );
 };
 

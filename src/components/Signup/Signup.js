@@ -47,8 +47,7 @@ const Signup = () => {
   }
   return (
     <div className='Signup'>
-    <img src="https://t3.ftcdn.net/jpg/03/48/55/20/360_F_348552050_uSbrANL65DNj21FbaCeswpM33mat1Wll.jpg" alt="" style={{position:'relative'}} />
-    <div  className="form">
+    <div  className="form col-md-4">
     <form onSubmit={handlesubmit}>
         <div className="mb-3">
             <label htmlFor="name" className="form-label">Name</label>

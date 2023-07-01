@@ -164,7 +164,7 @@ const Navbar = (props) => {
                                     </span>
                                 </a>)}
                                 {isaccount && loggedin && (<div className="flexcol" >
-                                    <ul className="account" style={{ backgroundColor: 'pink', zIndex: '2', padding: '0em', top: '3.8em', right: '9em' }}>
+                                    <ul className="account" style={{ backgroundColor: 'pink', zIndex: '2',padding:'0em',lineHeight:'2.7em' }}>
                                         <li><Link onClick={() => { setaccount(!isaccount) }} to="/api/account">My profile</Link></li>
                                         <li><Link onClick={() => { setaccount(!isaccount) }} to="/api/account/orders">My Orders</Link></li>
                                         <li><Link onClick={() => { setaccount(!isaccount) }} to="/api/account/wishlist">Wishlist</Link></li>

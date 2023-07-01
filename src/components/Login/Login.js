@@ -43,16 +43,15 @@ const Login = () => {
     }
 
     return (
-        <div className='Login' >
-            <img src="https://t3.ftcdn.net/jpg/03/48/55/20/360_F_348552050_uSbrANL65DNj21FbaCeswpM33mat1Wll.jpg" alt="" style={{position:'relative'}} />
-            <div  className="formclass
-            ">
+        <div className='Login'>
+            {/* <img src="https://t3.ftcdn.net/jpg/03/48/55/20/360_F_348552050_uSbrANL65DNj21FbaCeswpM33mat1Wll.jpg" alt="" style={{position:'relative'}} /> */}
+            <div  className="formclass col-md-4" >
             <form onSubmit={handlesubmit}>
-                <div className="mb-3">
+                <div className="mb-4 ">
                     <label htmlFor="email" className="form-label">Email address</label>
                     <input type="email" className="form-control" id="email" value={info.email} name="email" onChange={onChange} aria-describedby="emailHelp"/>
                 </div>
-                <div className="mb-3">
+                <div className="mb-4 ">
                     <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                     <input type="password" className="form-control" value={info.password} name="password" onChange={onChange} id="exampleInputPassword1"/>
                 </div>

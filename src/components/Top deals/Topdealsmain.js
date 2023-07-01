@@ -45,7 +45,7 @@ const Topdealsmain = () => {
       ) : (
         <div style={{ padding: '2em' }}>
           <h3 style={{ padding: '0.5em' }}>TOP DEALS</h3>
-          <div className="item-container">
+          <div className="products-container"  style={{ display: 'grid', gridRowGap: '1em' }}>
             {filteredProducts.map((product) => (
               <Item key={product.name} item={product} />
             ))}
