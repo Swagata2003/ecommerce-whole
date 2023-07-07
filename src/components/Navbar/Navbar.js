@@ -119,7 +119,7 @@ const Navbar = (props) => {
 
                                 {islistvisible && (<div className="flexcol">
                                     <div className="row" style={{padding:'0em'}}>
-                                        <h4 style={{padding:'0.5em 1em'}}>Top Brands</h4>
+                                        <strong style={{padding:'1em 2em 0em 2em'}}>Top Brands</strong>
                                         <ul className="women-brands" style={{lineHeight:'2em',padding:'0em'}}>
                                             <li><Link to= {`/${btoa('TRESemme')}`} style={{padding:'0em 2em'}}>TRESemme</Link></li>
                                             <li><Link to= {`/${btoa('mamaEarth')}`} style={{padding:'0em 2em'}}>mamaEarth</Link></li>
