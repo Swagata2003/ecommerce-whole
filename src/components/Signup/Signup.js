@@ -8,7 +8,7 @@ import BASE_URL from '../../config'
 const Signup = () => {
   const dispatch=useDispatch();
   const {addlocalstorage,removelocalstorage}=bindActionCreators(logincreator,dispatch);
-
+  const [loading,setLoading]=useState(false)
   const [info,setinfo]=useState({name:"",email:"",password:"",cpassword:""})
   const navigate=useNavigate()
   const host = BASE_URL;
@@ -17,6 +17,7 @@ const Signup = () => {
 
   const handlesubmit=async(e)=>{
     e.preventDefault()
+    setLoading(true);
     if(info.password!==info.cpassword){
       alert("Password did'nt match");
       return;
@@ -28,6 +29,7 @@ const Signup = () => {
         },
         body:JSON.stringify({name:info.name,email:info.email,password:info.password})
     })
+    setLoading(false)
     const json=await response.json();
     if(json.success){
       localStorage.setItem('token',json.authtoken);
@@ -67,6 +69,7 @@ const Signup = () => {
         </div>
         <button type="submit" className="btn btn-primary">Sign up</button>
     </form>
+    {loading && <p className='mt-3' style={{justifyContent:'center',display:'flex',alignItems:'center'}}>Processing...Please wait for few seconds </p>}
     </div>
 </div>
   )
