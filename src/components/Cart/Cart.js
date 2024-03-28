@@ -23,7 +23,7 @@ const Cart = () => {
     if (loggedin) fetchItems();
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 500);
+    }, 700);
 
     return () => clearTimeout(timer);
   }, []);
