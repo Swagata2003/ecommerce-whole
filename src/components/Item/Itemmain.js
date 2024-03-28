@@ -126,7 +126,7 @@ const Itemmain = (props) => {
           {filteredItems.map((filteredItem) => (
             <div className="card">
               <img
-              src={filteredItem.imageurl}
+              src={filteredItem.imageurl +"&sz=w1000"}
               alt={filteredItem.name}
               style={{ width: '6em', padding:'0.5em',cursor: 'pointer' }}
               onClick={() => navigate(`/item/${btoa(filteredItem.name)}`)}
@@ -140,7 +140,7 @@ const Itemmain = (props) => {
         <div style={{ display: 'flex', padding: '2em 4em 2em 1em', height: '100%', overflow: 'auto' }}>
           <div className="card" style={{ width: "25rem", height: '34em', padding: '1em', marginLeft: '2em' }}>
 
-            <img src={item.imageurl} alt={item.name} style={{ width: "25rem", height: '30em', objectFit: 'contain' }} />
+            <img src={item.imageurl +"&sz=w1000"} alt={item.name} style={{ width: "25rem", height: '30em', objectFit: 'contain' }} />
           </div>
 
           <div style={{ flex: 1, marginLeft: '3em' }}>

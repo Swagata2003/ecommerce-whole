@@ -20,7 +20,7 @@ const Carousel = () => {
                     <div className="carousel-item active justify-content-center">
                         <img
                             className='d-block w-100'
-                            src="https://drive.google.com/uc?export=view&id=10tOlrw8pA6cergpLLlu-aH7Pxw6q-yw-"
+                            src="https://drive.google.com/thumbnail?id=10tOlrw8pA6cergpLLlu-aH7Pxw6q-yw-&sz=w1000"
                             // https://drive.google.com/file/d/10tOlrw8pA6cergpLLlu-aH7Pxw6q-yw-/view?usp=sharing
                             alt="..."
                             onClick={()=>{navigate('/RWxlY3Ryb25pY3M=')}}
@@ -31,7 +31,7 @@ const Carousel = () => {
                         <img
                             className='d-block w-100'
                             // src="https://img.freepik.com/free-vector/horizontal-sale-banner-template_23-2148897328.jpg?w=2000"
-                            src="https://drive.google.com/uc?export=view&id=1RHvTTrdqh317v5uTyMjQBUxndq3-7cnf"
+                            src="https://drive.google.com/thumbnail?id=1RHvTTrdqh317v5uTyMjQBUxndq3-7cnf&sz=w1000"
                             alt="..."
                             onClick={()=>{navigate('/TWFrZXVw')}}
                             style={{cursor:'pointer'}}
@@ -41,7 +41,7 @@ const Carousel = () => {
                         <img
                             className='d-block w-100'
                             // src="https://i.ytimg.com/vi/U5Q3Du2W9a0/maxresdefault.jpg"
-                            src="https://drive.google.com/uc?export=view&id=1X8TRY5ehNpt1ZtD1vcXh61lcOCc6EPtj"
+                            src="https://drive.google.com/thumbnail?id=1X8TRY5ehNpt1ZtD1vcXh61lcOCc6EPtj&sz=w1000"
                             alt="..."
                             onClick={()=>{navigate('/womenclothing')}}
                             style={{cursor:'pointer'}}

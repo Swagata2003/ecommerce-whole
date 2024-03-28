@@ -44,7 +44,7 @@ const Orders = () => {
                                     <div className="row g-0" style={{alignItems:'center'}}>
                                         <div className="col" style={{ justifyContent: 'center' }}>
                                             <div className="card" style={{  borderColor: 'white', alignItems: 'center' }}>
-                                                <img src={item.item.imageurl} style={{ height: '10em', objectFit: 'contain' }} className="img-fluid rounded-start" alt="..." />
+                                                <img src={item.item.imageurl +"&sz=w1000"} style={{ height: '10em', objectFit: 'contain' }} className="img-fluid rounded-start" alt="..." />
                                                 <h5 style={{ color: item.orderstatus === "Placed" ? 'green' : 'red', justifyContent: 'center' }}>Order&nbsp;{item.orderstatus}</h5>
                                             </div>
 

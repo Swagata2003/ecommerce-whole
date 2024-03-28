@@ -104,7 +104,7 @@ const Cart = () => {
                     <div className="row g-0">
                       <div className="col-md-3">
                         <div className="card" style={{ width: '12em', borderColor: 'white' }}>
-                          <img src={item.item.imageurl} style={{ height: '10em', objectFit: 'contain' }} className="img-fluid rounded-start" alt="..." />
+                          <img src={item.item.imageurl+"&sz=w1000"} style={{ height: '10em', objectFit: 'contain' }} className="img-fluid rounded-start" alt="..." />
                         </div>
                       </div>
                       <div className="col-md-7">

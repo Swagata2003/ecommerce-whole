@@ -90,7 +90,7 @@ const Item = (props) => {
                     <div className={`wishlist-icon ${isWishlist ? 'active' : ''}`} onClick={handleWishlistClick}>
                         <i className="fas fa-heart"></i>
                     </div>
-                    <img src={item.imageurl} className="card-img-top" alt="..." style={{ height: "17rem", objectFit: 'contain' }} />
+                    <img src={item.imageurl +"&sz=w1000"} className="card-img-top" alt="..." style={{ height: "17rem", objectFit: 'contain' }} />
                     <div className="card-body">
                         <h5 className="card-title">{item.name.length <= 25 ? item.name : item.name.slice(0, 25) + '...'}</h5>
                         <p className="card-text">{item.description.length === 0 ? <br /> : item.description.length <= 35 ? item.description : item.description.slice(0, 35) + '...'}</p>
