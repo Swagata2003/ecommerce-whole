@@ -18,13 +18,14 @@ const Cart = () => {
     const fetchItems = async () => {
       const fetchedItems = await getitems();
       setItems(fetchedItems);
+      
     };
 
     if (loggedin) fetchItems();
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 700);
-
+    }, 900);
+    console.log(items)
     return () => clearTimeout(timer);
   }, []);
 
@@ -60,6 +61,7 @@ const Cart = () => {
         return i;
       });
       setItems(updatedItem);
+      
       edititem(item.item, item.noofitems - 1);
     }
   };
@@ -97,7 +99,7 @@ const Cart = () => {
         )}
         {items.length > 0 && (
           <div className="main d-flex flex-wrap" style={{ gap: '2em' }}>
-            <div className="card cart-items px-4 py-4" style={{ margin: '2em 0em 2em 4em', flex: '1 1 50%' }}>
+            <div className="card cart-items px-4 py-4" style={{ margin: '2em 0em 2em 3em',width:'55em'}}>
               {items.map((item) => (
                 <Link to={`/item/${btoa(item.item.name)}`} key={item.item.name}>
                   <div className="card mb-3" style={{ padding: '1em', borderRadius: '0%' }}>
@@ -149,7 +151,7 @@ const Cart = () => {
                 Place Order
               </button>
             </div>
-            <div className="bill me-5" style={{ flex: '1 1 20%' }}>
+            <div className="bill me-5" style={{ width:'25em'}}>
               <div className="card" style={{ width: 'auto', marginTop: '2em', padding: '2em' }}>
                 <h3>Total price ({items.length} item(s))</h3>
                 <div className="pricebody my-4">

@@ -11,8 +11,9 @@ const Wishlist = () => {
     const { addwishitem,getwishitems,deletewishitem,searchwishitem  } = context;
     const navigate = useNavigate();
     const loggedin = useSelector(state => state.loggedin);
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState(["null"]);
     const [isLoading, setIsLoading] = useState(true);
+    console.log(items)
     useEffect(() => {
         setIsLoading(true);
         const fetchItems = async () => {
@@ -23,7 +24,7 @@ const Wishlist = () => {
     if (loggedin) fetchItems();
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 500);
+    }, 900);
 
     return () => clearTimeout(timer);
     }, []);
@@ -37,7 +38,7 @@ const Wishlist = () => {
 
     return (
         <>
-        {isLoading ? (
+        { isLoading ? (
           <Loader />
         ) : (
           <div style={{ backgroundColor: 'rgb(235,235,235)', minHeight: '86vh', alignItems: 'center', justifyContent: 'center', display: 'flex' }}>
